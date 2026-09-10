@@ -55,6 +55,64 @@ const itinerary = [
   ["2026-10-03","邢台","04:59 抵达"]
 ];
 
+const restaurants = [
+  {
+    date:"2026-09-25", time:"18:30 晚餐", city:"威海",
+    name:"巧克力渔家·小船海鲜家常菜（韩乐坊店）",
+    budget:"约 ¥80/人",
+    fit:"第一天傍晚本来就去韩乐坊，直接在韩乐坊吃，不增加额外交通。",
+    dishes:"特色鲅鱼水饺、海肠贝丁捞饭、海鲜疙瘩汤、老灶蒸汽海鲜",
+    note:"近期页面显示 11:00–22:30；热门时段建议提前到或线上取号。",
+    url:"https://tw.trip.com/restaurant/china/weihai/detail/qiao-ke-li-seafood-home-style-cuisine-152786166/"
+  },
+  {
+    date:"2026-09-26", time:"10:45–12:00 早午餐", city:"威海",
+    name:"海鑫海鲜烧烤家常菜饺子馆（海水浴场店）",
+    budget:"约 ¥76/人",
+    fit:"就在火炬八街/国际海水浴场片区，逛完海水浴场先吃饭，再打车去猫头山最顺。",
+    dishes:"鲅鱼水饺、海肠捞饭、鱼锅饼子、蒸汽海鲜锅",
+    note:"地址：环海路185-107号（游客中心对面）。当天海鲜按明码价点，先问价再下单。",
+    url:"https://you.ctrip.com/food/weihai169/7519547-dianping.html"
+  },
+  {
+    date:"2026-09-28", time:"11:30–13:00 午餐", city:"青岛",
+    name:"九龙餐厅（大沽路店）",
+    budget:"约 ¥68/人",
+    fit:"位于老城区，适合栈桥—中山路—天主教堂之后吃午饭，再继续大学路/八大关。",
+    dishes:"辣大肠、蛤蜊小白菜、红烧刀鱼、辣蛤蜊、海肠捞饭",
+    note:"近期页面显示午市 11:00–14:00；建议 11:30 前到，避免老店排队。",
+    url:"https://gs.ctrip.com/html5/you/foods/fooddetail/5/5057173.html"
+  },
+  {
+    date:"2026-09-28", time:"18:30–20:00 晚餐", city:"青岛",
+    name:"船歌·鱼水饺青岛菜（闽江二路店）",
+    budget:"约 ¥100/人",
+    fit:"五四广场/奥帆中心结束后短途前往，吃完再回青岛北站方向，不需要重新折返老城区。",
+    dishes:"墨鱼水饺、鲅鱼水饺、黄花鱼水饺、辣炒蛤蜊、辣炒小鲍鱼",
+    note:"近期页面显示 10:30–21:30。若当天太累，可改在五四广场附近就餐。",
+    url:"https://gs.ctrip.com/html5/you/foods/fooddetail/2119889/5058125.html"
+  },
+  {
+    date:"2026-09-29", time:"19:00 晚餐＋甜品", city:"南京",
+    name:"清真蒋有记（老门东店）＋蓝老大糖粥藕",
+    budget:"约 ¥40–60/人",
+    fit:"两家都在老门东三条营附近，正好嵌入老门东→夫子庙→秦淮河夜游路线。",
+    dishes:"蒋有记：牛肉锅贴、牛肉馄饨；蓝老大：糖芋苗、酒酿赤豆元宵、糖藕粥",
+    note:"蒋有记近期页面显示 08:30–22:00，蓝老大 10:00–22:00；适合边逛边吃，不建议夫子庙主街再吃一顿正餐。",
+    url:"https://gs.ctrip.com/html5/you/foods/Nanjing9/12501082.html",
+    url2:"https://gs.ctrip.com/html5/you/foods/fooddetail/9/5105636.html"
+  },
+  {
+    date:"2026-10-01", time:"17:30–19:00 晚餐", city:"南京",
+    name:"南京大牌档（德基店）",
+    budget:"约 ¥70/人",
+    fit:"牛首山返程后本来就安排新街口，直接把南京菜正餐放在这里，不占白天景区时间。",
+    dishes:"盐水鸭、古法糖芋苗、赤豆元宵、美龄粥、狮子头、烤鸭包",
+    note:"近期平台页面显示德基一期7楼；不同地图平台对营业状态存在差异，国庆当天务必先电话/商场页面确认，若停业就在新街口就近换南京菜。",
+    url:"https://gs.ctrip.com/html5/you/foods/fooddetail/9/5089491.html"
+  }
+];
+
 function localDate(ymd){
   const [y,m,d]=ymd.split("-").map(Number);
   return new Date(y,m-1,d,12,0,0);
@@ -120,6 +178,25 @@ function renderToday(){
   }
 }
 
+function renderFood(){
+  const wrap=document.getElementById("foodGrid");
+  if(!wrap) return;
+  wrap.innerHTML=restaurants.map(x=>`
+    <article class="food-card">
+      <div class="food-head">
+        <div><div class="food-date">${zh(x.date)} · ${x.time}</div><h3>${x.name}</h3></div>
+        <span class="food-budget">${x.budget}</span>
+      </div>
+      <p class="food-fit"><strong>为什么顺路：</strong>${x.fit}</p>
+      <p><strong>推荐点：</strong>${x.dishes}</p>
+      <p class="food-note">${x.note}</p>
+      <div class="actions">
+        <a href="${x.url}" target="_blank" rel="noopener">查看餐厅</a>
+        ${x.url2?`<a href="${x.url2}" target="_blank" rel="noopener">查看甜品店</a>`:""}
+      </div>
+    </article>`).join("");
+}
+
 function makeICS(){
   const reminders=[
     ["20260920T080000","检查中山陵9月30日预约","打开官方预约渠道，检查9月30日是否开放；开放就立即预约。"],
@@ -160,4 +237,4 @@ document.getElementById("shareBtn").addEventListener("click",async()=>{
   else{ await navigator.clipboard.writeText(location.href); alert("网站链接已复制"); }
 });
 
-renderBookings(); renderTimeline(); renderToday();
+renderBookings(); renderTimeline(); renderFood(); renderToday();
