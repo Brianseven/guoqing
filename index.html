@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b57d0" />
+  <title>2026 国庆旅行管家｜威海·青岛·南京</title>
+  <meta name="description" content="2026 国庆威海、青岛、南京旅行路线与景区预约提醒" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div>
+        <p class="eyebrow">2026 NATIONAL DAY TRIP</p>
+        <h1>国庆旅行管家</h1>
+        <p class="lead">威海 → 青岛 → 南京 ｜ 9 月 24 日—10 月 3 日</p>
+      </div>
+      <div class="hero-actions">
+        <button id="shareBtn">分享行程</button>
+        <button id="calendarBtn" class="secondary">下载预约提醒日历</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="today card">
+      <div>
+        <span class="pill">今日预约状态</span>
+        <h2 id="todayTitle">正在计算…</h2>
+        <p id="todayText"></p>
+      </div>
+      <div class="countbox">
+        <strong id="tripCountdown">—</strong>
+        <span>距离出发</span>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">BOOKING</p>
+          <h2>景区预约清单</h2>
+        </div>
+        <p class="muted">勾选状态保存在你的浏览器中；分享给同行人后，每个人独立记录。</p>
+      </div>
+      <div id="bookingGrid" class="grid"></div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">ITINERARY</p>
+          <h2>实际订单版路线</h2>
+        </div>
+      </div>
+      <div id="timeline" class="timeline"></div>
+    </section>
+
+    <section class="card info">
+      <h2>提醒机制</h2>
+      <p>这个网站负责共享行程、显示每日“该不该预约”、保存完成状态，并可生成带提醒的日历文件。浏览器静态网页无法保证在网页关闭后每天后台主动推送，因此每日主动提醒由你已经创建的 ChatGPT 定时任务继续负责。</p>
+      <p>景区放票规则只采用已确认信息；没有官方明确固定放票日/放票时刻时，页面不会自行编造“提前 N 天几点放票”。</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>2026 国庆旅行管家 · 可作为 GitHub Pages 静态网站部署</p>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

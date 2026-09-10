@@ -1,0 +1,9 @@
+{
+  "name":"2026 国庆旅行管家",
+  "short_name":"国庆旅行",
+  "start_url":"./",
+  "display":"standalone",
+  "background_color":"#f5f7fb",
+  "theme_color":"#0b57d0",
+  "lang":"zh-CN"
+}
